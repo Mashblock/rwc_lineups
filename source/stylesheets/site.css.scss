@@ -6,3 +6,10 @@ $headings-font-weight: 300;
 text.nation {
   text-anchor: end;
 }
+
+circle.player {
+  fill: #fff;
+  fill-opacity: 20%;
+  stroke: #000;
+  stroke-width: 1px;
+}

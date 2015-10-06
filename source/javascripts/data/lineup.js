@@ -1,5 +1,6 @@
 let d3 = require('d3'),
     bind = require('lodash/function/bind'),
+    pluck = require('lodash/collection/pluck'),
     emitter = require('component-emitter');
 
 class LineupData {
@@ -14,6 +15,7 @@ class LineupData {
   }
 
   parse(e, data){
+    this.raw_data = data;
     this.data = d3.nest()
       .key( (d)=> d.nation )
       .sortKeys(d3.ascending)
@@ -21,6 +23,10 @@ class LineupData {
     this.emit('sync');
   }
 
+  age_range(){
+    var values = pluck(this.raw_data, 'date_of_birth').map( (d)=> new Date(d) )
+    return d3.extent(values);
+  }
 }
 
 module.exports = LineupData;
