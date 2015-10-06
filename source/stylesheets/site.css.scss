@@ -1,1 +1,8 @@
+$font-family-sans-serif: 'Raleway', sans-serif;
+$headings-font-weight: 300;
+
 @import 'bootstrap';
+
+text.nation {
+  text-anchor: end;
+}
