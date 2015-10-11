@@ -1,6 +1,7 @@
 let d3 = require('d3'),
     bind = require('lodash/function/bind'),
-    AgeRenderer = require('./age_renderer');
+    AgeRenderer = require('./age_renderer'),
+    CapsRenderer = require('./caps_renderer');
 
 
 class LineupVisual {
@@ -13,11 +14,21 @@ class LineupVisual {
     this.age_scale = d3.scale.linear().range([this.width - 160, 0]);
 
     this.svg = this.element.append('svg').attr("width", this.width);
+    this.renderers = {
+      age: new AgeRenderer(this),
+      caps: new CapsRenderer(this)
+    };
 
-    this.renderer = new AgeRenderer(this);
+    this.setType('age');
+  }
+
+  setType(type){
+    this.renderer = this.renderers[type];
+    this.redraw()
   }
 
   redraw(){
+    if (this.source.data.length == 0) return;
     this.svg.attr('height', this.source.data.length * 30);
     this.age_scale.domain(this.source.age_range());
 

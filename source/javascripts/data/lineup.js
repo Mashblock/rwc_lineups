@@ -27,6 +27,11 @@ class LineupData {
     var values = pluck(this.raw_data, 'date_of_birth').map( (d)=> new Date(d) )
     return d3.extent(values);
   }
+
+  caps_range(){
+    var values = pluck(this.raw_data, 'caps').map( (d)=> parseInt(d, 10) )
+    return d3.extent(values);
+  }
 }
 
 module.exports = LineupData;
