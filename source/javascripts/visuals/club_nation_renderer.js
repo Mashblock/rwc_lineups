@@ -10,7 +10,6 @@ class ClubNationRenderer {
   drawPlayers(selection) {
     this.graph.top_axis.style("visibility", "hidden");
     var sorted_data = this.sortedData();
-    console.log(sorted_data)
     selection.attr('data-nation', (d)=> d.club_nation || "zzz" )
       .transition()
       .duration(500)

@@ -1,3 +1,7 @@
+window.$ = window.jQuery = require('jquery');
+require('bootstrap/js/tooltip');
+require('bootstrap/js/popover');
+
 let LineupVisual = require('./visuals/lineup'),
     LineupData   = require('./data/lineup'),
     TypeSwitch   = require('./components/type_switch');

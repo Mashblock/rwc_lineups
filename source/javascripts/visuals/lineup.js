@@ -69,9 +69,19 @@ class LineupVisual {
 
     players.exit().remove();
 
-    players.selectAll("title").text( (d)=> d.name );
-
+    this.applyTooltip(players);
     this.renderer.drawPlayers(players);
+  }
+
+  applyTooltip(selection) {
+    selection.attr("data-toggle", "popover")
+      .attr("data-trigger", "hover")
+      .attr("data-container", "body")
+      .attr("data-placement", "right")
+      .attr("data-html", "true")
+      .attr("data-title", (d)=> d.name )
+      .attr("data-content", (d)=> `<ul class='list-unstyled'><li><strong>Date of birth:</strong> ${d.date_of_birth}</li><li><strong>Club:</strong> ${d.club}</li></ul>` );
+    $("[data-toggle=popover]", this.element.node()).popover()
   }
 }
 
