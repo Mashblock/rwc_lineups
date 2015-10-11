@@ -1,5 +1,7 @@
+$body-bg: #eaebee;
 $font-family-sans-serif: 'Raleway', sans-serif;
 $headings-font-weight: 300;
+$brand-primary: #0057b8;
 
 @import 'bootstrap';
 
@@ -12,6 +14,113 @@ circle.player {
   fill-opacity: 20%;
   stroke: #000;
   stroke-width: 1px;
+
+  &[data-nation]{
+    fill: #fff;
+    fill-opacity: 100%;
+    stroke: #999;
+    stroke-width: 1.5px;
+  }
+
+  &[data-nation="Argentina"]{
+    fill: #3ea0e8;
+    stroke: #fff;
+  }
+
+  &[data-nation="Australia"]{
+    fill: #eaa109;
+    stroke: #003135;
+  }
+
+  &[data-nation="Canada"]{
+    fill: #a20000;
+    stroke: #000000;
+  }
+
+  &[data-nation="England"]{
+    fill: #fff;
+    stroke: #db1627;
+  }
+
+  &[data-nation="Fiji"]{
+    fill: #fff;
+    stroke: #000;
+  }
+
+  &[data-nation="France"]{
+    fill: #2f2ec1;
+    stroke: #fff;
+  }
+
+  &[data-nation="Georgia"]{
+    fill: #000;
+    stroke: #9d0012;
+  }
+
+  &[data-nation="Ireland"]{
+    fill: #0b5731;
+    stroke: #fff;
+  }
+
+  &[data-nation="Italy"]{
+    fill: #0f75c1;
+    stroke: #877742;
+  }
+
+  &[data-nation="Japan"]{
+    fill: #f1c9db;
+    stroke: #ec5864;
+  }
+
+  &[data-nation="Namibia"]{
+    fill: #0e006c;
+    stroke: #fff;
+  }
+
+  &[data-nation="New Zealand"]{
+    fill: #000;
+    stroke: #fff;
+  }
+
+  &[data-nation="Romania"]{
+    fill: #faca15;
+    stroke: #001b76;
+  }
+
+  &[data-nation="Samoa"]{
+    fill: #ffffff;
+    stroke: #102579;
+  }
+
+  &[data-nation="Scotland"]{
+    fill: #0a3a72;
+    stroke: #ffffff;
+  }
+
+  &[data-nation="South Africa"]{
+    fill: #0d2f14;
+    stroke: #fca408;
+  }
+
+  &[data-nation="Tonga"]{
+    fill: #e5001c;
+    stroke: #fff;
+  }
+
+  &[data-nation="United States"]{
+    fill: #020d34;
+    stroke: #b30023;
+  }
+
+  &[data-nation="Uruguay"]{
+    fill: #4a7cde;
+    stroke: #030408;
+  }
+
+  &[data-nation="Wales"]{
+    fill: #c50028;
+    stroke: #ffd589;
+  }
 }
 
 g.top-axis {

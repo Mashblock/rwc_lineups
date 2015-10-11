@@ -10,10 +10,11 @@ class AgeRenderer {
 
   drawPlayers(selection) {
     this.x_scale.domain(this.graph.source.age_range()).nice();
-    this.graph.top_axis.call(this.x_axis);
+    this.graph.top_axis.style("visibility", "visible")
+      .call(this.x_axis);
 
-    selection.transition()
-      .duration(500)
+    selection.attr('data-nation', null)
+      .transition().duration(500)
       .attr('r', 5)
       .attr("cx", (d)=> this.x_scale(moment().diff(d.date_of_birth, 'years', true)) );
   }

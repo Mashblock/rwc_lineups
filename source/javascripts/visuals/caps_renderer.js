@@ -9,10 +9,11 @@ class CapsRenderer {
 
   drawPlayers(selection) {
     this.x_scale.domain(this.graph.source.caps_range()).nice(10);
-    this.graph.top_axis.call(this.x_axis);
+    this.graph.top_axis.style("visibility", "visible")
+      .call(this.x_axis);
 
-    selection.transition()
-      .duration(500)
+    selection.attr('data-nation', null)
+      .transition().duration(500)
       .attr('r', 5)
       .attr("cx", (d)=> this.x_scale(parseInt(d.caps, 10)) )
       .attr("cy", 0)

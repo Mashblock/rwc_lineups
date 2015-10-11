@@ -1,7 +1,8 @@
 let d3 = require('d3'),
     bind = require('lodash/function/bind'),
     AgeRenderer = require('./age_renderer'),
-    CapsRenderer = require('./caps_renderer');
+    CapsRenderer = require('./caps_renderer'),
+    ClubNationRenderer = require('./club_nation_renderer');
 
 
 class LineupVisual {
@@ -20,10 +21,11 @@ class LineupVisual {
 
     this.renderers = {
       age: new AgeRenderer(this),
-      caps: new CapsRenderer(this)
+      caps: new CapsRenderer(this),
+      club_nation: new ClubNationRenderer(this)
     };
 
-    this.setType('age');
+    this.setType('club_nation');
   }
 
   setType(type){
