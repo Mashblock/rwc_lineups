@@ -11,9 +11,13 @@ class LineupVisual {
     this.source.on('sync', bind(this.redraw, this));
     this.width = parseInt(this.element.style('width').replace("px", ''), 10)
 
-    this.age_scale = d3.scale.linear().range([this.width - 160, 0]);
-
     this.svg = this.element.append('svg').attr("width", this.width);
+    this.list = this.svg.append("g").attr("class", "list")
+      .attr("transform", "translate(0, 30)");
+
+    this.top_axis = this.svg.append("g").attr("class", "top-axis")
+      .attr("transform", "translate(130, 30)");
+
     this.renderers = {
       age: new AgeRenderer(this),
       caps: new CapsRenderer(this)
@@ -29,10 +33,9 @@ class LineupVisual {
 
   redraw(){
     if (this.source.data.length == 0) return;
-    this.svg.attr('height', this.source.data.length * 30);
-    this.age_scale.domain(this.source.age_range());
+    this.svg.attr('height', (this.source.data.length * 30) + 60 );
 
-    this.svg.selectAll('g.row')
+    this.list.selectAll('g.row')
       .data(this.source.data, (d)=> d.key )
       .call(bind(this.drawRows, this));
   }

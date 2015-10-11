@@ -13,3 +13,19 @@ circle.player {
   stroke: #000;
   stroke-width: 1px;
 }
+
+g.top-axis {
+  path.domain {
+    fill: none;
+    stroke: none;
+  }
+
+  g.tick {
+    line {
+      stroke: #aaa;
+    }
+    text {
+      font-size: 10px;
+    }
+  }
+}

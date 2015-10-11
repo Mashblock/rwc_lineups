@@ -1,18 +1,21 @@
-let d3 = require("d3");
+let d3 = require("d3"),
+    moment = require('moment');
 
 class AgeRenderer {
   constructor(graph){
     this.graph = graph;
-    this.x_scale = d3.scale.linear().range([this.graph.width - 160, 0]);
+    this.x_scale = d3.scale.linear().range([0, this.graph.width - 160]);
+    this.x_axis = d3.svg.axis().scale(this.x_scale).orient("top");
   }
 
   drawPlayers(selection) {
-    this.x_scale.domain(this.graph.source.age_range());
+    this.x_scale.domain(this.graph.source.age_range()).nice();
+    this.graph.top_axis.call(this.x_axis);
 
     selection.transition()
       .duration(500)
       .attr('r', 5)
-      .attr("cx", (d)=> this.x_scale(new Date(d.date_of_birth)) );    
+      .attr("cx", (d)=> this.x_scale(moment().diff(d.date_of_birth, 'years', true)) );
   }
 }
 

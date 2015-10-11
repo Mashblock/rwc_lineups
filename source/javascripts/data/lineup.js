@@ -1,7 +1,8 @@
 let d3 = require('d3'),
     bind = require('lodash/function/bind'),
     pluck = require('lodash/collection/pluck'),
-    emitter = require('component-emitter');
+    emitter = require('component-emitter'),
+    moment = require('moment');
 
 class LineupData {
   constructor(endpoint){
@@ -24,7 +25,7 @@ class LineupData {
   }
 
   age_range(){
-    var values = pluck(this.raw_data, 'date_of_birth').map( (d)=> new Date(d) )
+    var values = pluck(this.raw_data, 'date_of_birth').map( (d)=> moment().diff(d, 'years', true) )
     return d3.extent(values);
   }
 
