@@ -1,5 +1,6 @@
 let d3 = require('d3'),
-    bind = require('lodash/function/bind');
+    bind = require('lodash/function/bind'),
+    AgeRenderer = require('./age_renderer');
 
 
 class LineupVisual {
@@ -7,10 +8,13 @@ class LineupVisual {
     this.element = d3.select(element);
     this.source = source;
     this.source.on('sync', bind(this.redraw, this));
+    this.width = parseInt(this.element.style('width').replace("px", ''), 10)
 
-    this.age_scale = d3.scale.linear().range([400, 0]);
+    this.age_scale = d3.scale.linear().range([this.width - 160, 0]);
 
-    this.svg = this.element.append('svg').attr("width", this.element.style('width'));
+    this.svg = this.element.append('svg').attr("width", this.width);
+
+    this.renderer = new AgeRenderer(this);
   }
 
   redraw(){
@@ -32,24 +36,9 @@ class LineupVisual {
     selection.attr('transform', (d, i)=> `translate(100, ${(i*30)+15})`)
 
     selection.selectAll("text.nation").text( (d)=> d.key );
-    selection.selectAll("g.paper").attr("transform", "translate(115, -5)")
-      .call(bind(this.drawPlayers, this));
+    selection.selectAll("g.paper").attr("transform", "translate(30, -5)");
+    this.renderer.drawPlayers(selection.selectAll("g.paper"));
 
-  }
-
-  drawPlayers(selection) {
-    var players = selection.selectAll("circle.player")
-      .data( (d)=> d.values , (d)=> d.name );
-
-    players.enter().append("circle").attr('class', 'player')
-      .append("title");
-
-    players.exit().remove();
-
-    players.attr('r', 5)
-      .attr("cx", (d)=> this.age_scale(new Date(d.date_of_birth)) )
-      .attr("cy", 0)
-    players.selectAll("title").text( (d)=> d.name )
   }
 }
 
