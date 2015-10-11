@@ -2,6 +2,7 @@ $body-bg: #eaebee;
 $font-family-sans-serif: 'Raleway', sans-serif;
 $headings-font-weight: 300;
 $brand-primary: #0057b8;
+$hr-border: #777;
 
 @import 'bootstrap';
 
@@ -19,7 +20,7 @@ circle.player {
     fill: #fff;
     fill-opacity: 100%;
     stroke: #999;
-    stroke-width: 1.5px;
+    stroke-width: 2px;
   }
 
   &[data-nation="Argentina"]{
@@ -34,7 +35,7 @@ circle.player {
 
   &[data-nation="Canada"]{
     fill: #a20000;
-    stroke: #000000;
+    stroke: #fff;
   }
 
   &[data-nation="England"]{
@@ -59,7 +60,7 @@ circle.player {
 
   &[data-nation="Ireland"]{
     fill: #0b5731;
-    stroke: #fff;
+    stroke: #000;
   }
 
   &[data-nation="Italy"]{
@@ -79,7 +80,7 @@ circle.player {
 
   &[data-nation="New Zealand"]{
     fill: #000;
-    stroke: #fff;
+    stroke: #6d6d6d;
   }
 
   &[data-nation="Romania"]{
@@ -108,8 +109,8 @@ circle.player {
   }
 
   &[data-nation="United States"]{
-    fill: #020d34;
-    stroke: #b30023;
+    fill: #b30023;
+    stroke: #020d34;
   }
 
   &[data-nation="Uruguay"]{

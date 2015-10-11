@@ -33,6 +33,10 @@ class LineupData {
     var values = pluck(this.raw_data, 'caps').map( (d)=> parseInt(d, 10) )
     return d3.extent(values);
   }
+
+  club_nation_sorted(){
+    this.data.sortValues( (d)=> d.club_nation );
+  }
 }
 
 module.exports = LineupData;

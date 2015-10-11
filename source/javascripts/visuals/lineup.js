@@ -25,7 +25,7 @@ class LineupVisual {
       club_nation: new ClubNationRenderer(this)
     };
 
-    this.setType('club_nation');
+    this.setType('age');
   }
 
   setType(type){
