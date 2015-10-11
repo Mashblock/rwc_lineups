@@ -47,9 +47,26 @@ class LineupVisual {
     selection.attr('transform', (d, i)=> `translate(100, ${(i*30)+15})`)
 
     selection.selectAll("text.nation").text( (d)=> d.key );
-    selection.selectAll("g.paper").attr("transform", "translate(30, -5)");
-    this.renderer.drawPlayers(selection.selectAll("g.paper"));
+    selection.selectAll("g.paper").attr("transform", "translate(30, -5)")
+      .call(bind(this.drawPlayers, this));
+  }
 
+  drawPlayers(selection){
+    var players = selection.selectAll("circle.player")
+      .data( (d)=> d.values , (d)=> d.name );
+
+    players.enter().append("circle")
+      .attr("cx", 0)
+      .attr("cy", 0)
+      .attr("r", 0)
+      .attr('class', 'player')
+      .append("title");
+
+    players.exit().remove();
+
+    players.selectAll("title").text( (d)=> d.name );
+
+    this.renderer.drawPlayers(players);
   }
 }
 

@@ -8,18 +8,12 @@ class CapsRenderer {
 
   drawPlayers(selection) {
     this.x_scale.domain(this.graph.source.caps_range());
-    var players = selection.selectAll("circle.player")
-      .data( (d)=> d.values , (d)=> d.name );
 
-    players.enter().append("circle").attr('class', 'player')
-      .append("title");
-
-    players.exit().remove();
-
-    players.attr('r', 5)
+    selection.transition()
+      .duration(500)
+      .attr('r', 5)
       .attr("cx", (d)=> this.x_scale(parseInt(d.caps, 10)) )
       .attr("cy", 0)
-    players.selectAll("title").text( (d)=> d.name )
   }
 }
 
